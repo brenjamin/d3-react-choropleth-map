@@ -14,20 +14,17 @@ main {
 .svg-wrapper,
 #tooltip {
   background-color: white;
-  padding: 3rem;
+  padding: 2rem 4rem;
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 #title {
+  font-size: 1.75rem;
+}
+
+#description {
   font-size: 1.25rem;
-}
-
-.title-small {
-  font-size: 1rem;
-}
-
-.bar {
-  fill: #137b80;
 }
 
 #tooltip {
@@ -40,12 +37,17 @@ main {
   text-align: center;
 }
 
-.tick {
-  font-size: 0.75rem;
-}
-
 .states {
   fill: none;
   stroke: white;
   stroke-width: 1;
+}
+
+.source {
+  text-align: right;
+  margin-top: 32px;
+}
+
+.tick {
+  font-size: 0.75rem;
 }

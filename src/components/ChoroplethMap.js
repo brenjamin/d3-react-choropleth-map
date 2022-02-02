@@ -2,16 +2,15 @@ import { Marks } from "./Marks"
 import { Tooltip } from "./Tooltip"
 import { scaleThreshold, range, max, min, schemeGreens } from "d3"
 import { useMemo, useState } from "react"
+import { Legend } from "./Legend"
 
-export const ChoroplethMap = ({ width, height, margin, data, usMap }) => {
+export const ChoroplethMap = ({ width, height, data, usMap }) => {
   const [activeCounty, setActiveCounty] = useState({ id: null, x: null, y: null })
   const bachelorsValue = d => d.bachelorsOrHigher
   const legendWidth = width / 3
-  const innerWidth = width - margin.left - margin.right
-  const innerHeight = height - margin.top - margin.bottom
-
   const minValue = min(data, bachelorsValue)
   const maxValue = max(data, bachelorsValue)
+
   const colorScale = useMemo(
     () =>
       scaleThreshold()
@@ -22,7 +21,6 @@ export const ChoroplethMap = ({ width, height, margin, data, usMap }) => {
 
   const handleMouseOver = useMemo(
     () => (e, id) => {
-      console.log(e)
       setActiveCounty({
         id,
         x: e.pageX,
@@ -43,6 +41,7 @@ export const ChoroplethMap = ({ width, height, margin, data, usMap }) => {
     <>
       <Tooltip activeCounty={activeCounty} data={data} />
       <svg width={width} height={height}>
+        <Legend width={width} colorScale={colorScale} legendWidth={legendWidth} />
         <Marks data={data} colorScale={colorScale} usMap={usMap} bachelorsValue={bachelorsValue} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
       </svg>
     </>

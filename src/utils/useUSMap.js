@@ -8,7 +8,6 @@ export const useUSMap = () => {
   useEffect(() => {
     json(url).then(data => {
       const { counties, states } = data.objects
-      console.log("States", states)
 
       setData({
         counties: feature(data, counties),
