@@ -10,8 +10,6 @@ const App = () => {
   const data = useData()
   const usMap = useUSMap()
 
-  if (data) console.log("data", data)
-
   return !data || !usMap ? (
     <pre>Loading...</pre>
   ) : (
@@ -20,7 +18,7 @@ const App = () => {
         <h1 id="title">United States Educational Attainment</h1>
         <p id="description">Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</p>
         <ChoroplethMap width={width} height={height} data={data} usMap={usMap} />
-        <div class="source">
+        <div className="source">
           Source: <a href="https://www.ers.usda.gov/data-products/county-level-data-sets/download-data.aspx">USDA Economic Research Service</a>
         </div>
       </div>
